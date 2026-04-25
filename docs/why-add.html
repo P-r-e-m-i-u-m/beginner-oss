@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why add your repo? — beginner-oss</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0d1117;--surface:#161b22;--surface2:#1c2128;--border:#30363d;--text:#e6edf3;--text2:#9198a1;--text3:#656d76;--accent:#58a6ff}
+    body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .topbar{border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:12px}
+    .topbar-back{font-size:13px;color:var(--text2)}
+    .topbar-back:hover{color:var(--text)}
+    .topbar-logo{font-weight:800;font-size:16px;color:var(--text)}
+    .hero{padding:64px 24px 48px;text-align:center;background:radial-gradient(ellipse 80% 60% at 50% -10%,#1f2d4a 0%,transparent 70%);border-bottom:1px solid var(--border)}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:#238636;color:#aff5b4;border-radius:999px;padding:5px 14px;font-size:12px;font-weight:600;margin-bottom:20px}
+    .hero h1{font-size:clamp(28px,5vw,48px);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:16px;background:linear-gradient(135deg,#e6edf3 30%,#58a6ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero p{color:var(--text2);font-size:17px;max-width:500px;margin:0 auto}
+    .content{max-width:800px;margin:0 auto;padding:56px 24px 80px}
+    .section{margin-bottom:56px}
+    .section h2{font-size:22px;font-weight:800;margin-bottom:6px}
+    .section-sub{color:var(--text2);font-size:14px;margin-bottom:24px}
+    .benefit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+    .benefit-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px}
+    .benefit-icon{font-size:24px;margin-bottom:10px}
+    .benefit-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+    .benefit-card p{font-size:13px;color:var(--text2);line-height:1.55}
+    .criteria-list{display:flex;flex-direction:column;gap:10px}
+    .criteria-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;gap:14px}
+    .criteria-check{width:28px;height:28px;border-radius:50%;background:#23863620;border:1px solid #23863650;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+    .criteria-text h4{font-size:14px;font-weight:700;margin-bottom:3px}
+    .criteria-text p{font-size:13px;color:var(--text2);line-height:1.5}
+    .faq{display:flex;flex-direction:column;gap:12px}
+    .faq-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px}
+    .faq-item h4{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+    .faq-item p{font-size:13px;color:var(--text2);line-height:1.55}
+    .faq-item code{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:12px;color:var(--text)}
+    .cta-box{background:linear-gradient(135deg,#1a2d1a,#1f3d2a);border:1px solid #238636;border-radius:14px;padding:36px;text-align:center}
+    .cta-box h2{font-size:22px;font-weight:800;margin-bottom:10px}
+    .cta-box p{color:var(--text2);font-size:14px;margin-bottom:24px}
+    .cta-btn{display:inline-flex;background:#238636;color:#fff;font-weight:700;font-size:14px;padding:12px 24px;border-radius:8px;text-decoration:none}
+    .cta-btn:hover{background:#2ea043;text-decoration:none}
+    .steps-list{display:flex;flex-direction:column}
+    .step-row{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+    .step-row:last-child{border-bottom:none}
+    .step-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#1f3d6e,#388bfd);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .step-content h4{font-size:14px;font-weight:700;margin-bottom:4px}
+    .step-content p{font-size:13px;color:var(--text2);line-height:1.5}
+    .step-content code{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:12px;color:var(--text)}
+    footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-size:13px;color:var(--text3)}
+    footer a{color:var(--text3)}
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a href="index.html" class="topbar-back">← Back to directory</a>
+  <span style="color:var(--border);margin:0 4px">|</span>
+  <span class="topbar-logo">beginner-oss</span>
+</div>
+<div class="hero">
+  <div class="hero-badge">📢 For maintainers</div>
+  <h1>Why add your repo to beginner-oss?</h1>
+  <p>Get your project in front of motivated beginners actively looking for their first contribution.</p>
+</div>
+<div class="content">
+  <div class="section">
+    <h2>What you get</h2>
+    <p class="section-sub">Every listed repo gets real visibility with developers ready to contribute.</p>
+    <div class="benefit-grid">
+      <div class="benefit-card"><div class="benefit-icon">🎯</div><h3>Targeted traffic</h3><p>Visitors are actively looking for their first PR — motivated contributors, not browsers.</p></div>
+      <div class="benefit-card"><div class="benefit-icon">🔗</div><h3>Direct issue links</h3><p>Your good first issues show as clickable links. Zero friction for contributors.</p></div>
+      <div class="benefit-card"><div class="benefit-icon">🤖</div><h3>Quality signal</h3><p>The verified badge shows contributors your repo is genuinely welcoming.</p></div>
+      <div class="benefit-card"><div class="benefit-icon">🔄</div><h3>Always fresh</h3><p>Issue counts refresh weekly. Dead listings removed automatically.</p></div>
+      <div class="benefit-card"><div class="benefit-icon">📊</div><h3>Category placement</h3><p>Listed under your tech category so the right people find you.</p></div>
+      <div class="benefit-card"><div class="benefit-icon">⚡</div><h3>Zero maintenance</h3><p>List once, stay listed. Bot re-validates every Monday.</p></div>
+    </div>
+  </div>
+  <div class="section">
+    <h2>What the bot checks</h2>
+    <p class="section-sub">All 6 criteria checked automatically. Fix any that fail and re-submit.</p>
+    <div class="criteria-list">
+      <div class="criteria-item"><div class="criteria-check">✅</div><div class="criteria-text"><h4>README exists</h4><p>Beginners need to understand what your project does before contributing.</p></div></div>
+      <div class="criteria-item"><div class="criteria-check">✅</div><div class="criteria-text"><h4>CONTRIBUTING.md exists</h4><p>Tells contributors how to fork, set up, and open a PR. Without it, beginners bounce.</p></div></div>
+      <div class="criteria-item"><div class="criteria-check">✅</div><div class="criteria-text"><h4>Open source license</h4><p>Contributors need legal clarity. MIT, Apache, GPL — any recognized OSS license works.</p></div></div>
+      <div class="criteria-item"><div class="criteria-check">✅</div><div class="criteria-text"><h4>10+ contributors</h4><p>Shows active community. Single-maintainer repos risk unreviewed PRs.</p></div></div>
+      <div class="criteria-item"><div class="criteria-check">✅</div><div class="criteria-text"><h4>Active in last 90 days</h4><p>At least one commit in 90 days. Inactive repos mean unreviewed PRs.</p></div></div>
+      <div class="criteria-item"><div class="criteria-check">✅</div><div class="criteria-text"><h4>Open good first issues</h4><p>At least one open issue tagged <code>good first issue</code>. No issues = nothing to work on.</p></div></div>
+    </div>
+  </div>
+  <div class="section">
+    <h2>How to add your repo</h2>
+    <p class="section-sub">Takes 3 minutes. Bot handles the rest.</p>
+    <div class="steps-list">
+      <div class="step-row"><div class="step-num">1</div><div class="step-content"><h4>Fork beginner-oss</h4><p>Go to <a href="https://github.com/P-r-e-m-i-u-m/beginner-oss" target="_blank">github.com/P-r-e-m-i-u-m/beginner-oss</a> and click Fork.</p></div></div>
+      <div class="step-row"><div class="step-num">2</div><div class="step-content"><h4>Create a suggestion file</h4><p>Create <code>suggestions/owner-reponame.md</code> with the repo URL and why it is beginner-friendly.</p></div></div>
+      <div class="step-row"><div class="step-num">3</div><div class="step-content"><h4>Open a PR</h4><p>Bot validates within minutes. Pass = auto-merged and live. Fail = closed with exact reasons.</p></div></div>
+      <div class="step-row"><div class="step-num">4</div><div class="step-content"><h4>Done</h4><p>Your repo is live. Bot re-checks every Monday to keep it fresh.</p></div></div>
+    </div>
+  </div>
+  <div class="section">
+    <h2>Common questions</h2>
+    <div class="faq">
+      <div class="faq-item"><h4>Can I suggest my own repo?</h4><p>No. The bot auto-closes self-promotions. Listings are community-verified, not self-reported.</p></div>
+      <div class="faq-item"><h4>My repo has no CONTRIBUTING.md. What do I do?</h4><p>Create one — explain how to fork, clone, run locally, and open a PR. Then ask a contributor to suggest it.</p></div>
+      <div class="faq-item"><h4>What if my listing gets removed?</h4><p>The weekly bot removes repos inactive 180+ days. If your repo becomes active again, suggest it again.</p></div>
+      <div class="faq-item"><h4>How long does the bot take?</h4><p>Under 2 minutes from PR open to bot comment. Site rebuilds within 5 minutes if it passes.</p></div>
+    </div>
+  </div>
+  <div class="cta-box">
+    <h2>Ready to get contributors?</h2>
+    <p>Ask someone who has used your repo to suggest it.</p>
+    <a href="https://github.com/P-r-e-m-i-u-m/beginner-oss/compare" target="_blank" class="cta-btn">Open a PR to suggest a repo →</a>
+  </div>
+</div>
+<footer><p>Built by <a href="https://github.com/P-r-e-m-i-u-m">@P-r-e-m-i-u-m</a> · <a href="index.html">Back to directory</a> · <a href="https://github.com/P-r-e-m-i-u-m/beginner-oss">Source on GitHub</a></p></footer>
+</body>
+</html>

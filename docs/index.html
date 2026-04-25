@@ -3,449 +3,309 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A human-curated, bot-verified directory of open source repos that are genuinely ready for beginners. No scrapers. No dead repos. Just quality.">
-  <meta property="og:title" content="beginner-oss — Real repos. Real beginner issues.">
-  <meta property="og:description" content="Every repo here passed an automated quality check. Good docs, welcoming maintainers, open issues waiting for you.">
-  <title>beginner-oss — Real repos. Real beginner issues.</title>
+  <meta name="description" content="A bot-verified directory of open source repos genuinely ready for beginners.">
+  <title>beginner-oss — Find your first open source contribution</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --surface2: #21262d;
-      --border: #30363d;
-      --text: #e6edf3;
-      --text2: #8b949e;
-      --accent: #58a6ff;
-      --accent2: #3fb950;
-      --danger: #f85149;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      min-height: 100vh;
-    }
-
-    /* HERO */
-    .hero {
-      padding: 64px 24px 48px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-      background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: #238636; color: #aff5b4;
-      border-radius: 999px; padding: 4px 12px;
-      font-size: 12px; font-weight: 600; margin-bottom: 20px;
-    }
-    .hero h1 {
-      font-size: clamp(28px, 5vw, 52px);
-      font-weight: 800; letter-spacing: -1px;
-      line-height: 1.15; margin-bottom: 16px;
-    }
-    .hero h1 span { color: var(--accent); }
-    .hero p {
-      color: var(--text2); font-size: 18px;
-      max-width: 560px; margin: 0 auto 32px; line-height: 1.6;
-    }
-    .hero-stats {
-      display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
-    }
-    .stat { text-align: center; }
-    .stat-num { font-size: 28px; font-weight: 700; color: var(--accent); }
-    .stat-label { font-size: 13px; color: var(--text2); }
-
-    /* CTA */
-    .cta-bar {
-      padding: 20px 24px;
-      text-align: center;
-      background: #238636;
-      font-size: 15px; font-weight: 600;
-    }
-    .cta-bar a { color: #aff5b4; text-decoration: none; }
-    .cta-bar a:hover { text-decoration: underline; }
-
-    /* CONTROLS */
-    .controls {
-      max-width: 1200px; margin: 0 auto;
-      padding: 24px 24px 0;
-      display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
-    }
-    .search-wrap { position: relative; flex: 1; min-width: 200px; }
-    .search-wrap input {
-      width: 100%;
-      background: var(--surface); border: 1px solid var(--border);
-      color: var(--text); border-radius: 8px;
-      padding: 10px 16px 10px 40px; font-size: 14px;
-      outline: none; transition: border-color 0.2s;
-    }
-    .search-wrap input:focus { border-color: var(--accent); }
-    .search-icon {
-      position: absolute; left: 12px; top: 50%;
-      transform: translateY(-50%); color: var(--text2); font-size: 16px;
-    }
-    .filter-select {
-      background: var(--surface); border: 1px solid var(--border);
-      color: var(--text); border-radius: 8px;
-      padding: 10px 14px; font-size: 14px; cursor: pointer; outline: none;
-    }
-    .count-label { color: var(--text2); font-size: 14px; margin-left: auto; white-space: nowrap; }
-
-    /* GRID */
-    .grid {
-      max-width: 1200px; margin: 0 auto;
-      padding: 20px 24px 60px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 16px;
-    }
-
-    /* CARD */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      display: flex; flex-direction: column; gap: 14px;
-      transition: border-color 0.2s, transform 0.15s;
-    }
-    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
-
-    .card-title-row { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
-    .repo-name {
-      font-weight: 700; font-size: 15px;
-      color: var(--accent); text-decoration: none;
-    }
-    .repo-name:hover { text-decoration: underline; }
-    .fresh-badge {
-      font-size: 11px; font-weight: 600;
-      padding: 2px 8px; border-radius: 999px;
-      white-space: nowrap; margin-left: auto;
-    }
-    .description { font-size: 13px; color: var(--text2); line-height: 1.5; margin-top: 4px; }
-
-    .why-box {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px; padding: 10px 12px;
-      display: flex; gap: 8px; align-items: flex-start;
-    }
-    .why-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
-    .why-text { font-size: 12px; color: var(--text2); line-height: 1.5; }
-
-    .issue-links { display: flex; flex-direction: column; gap: 6px; }
-    .issue-link {
-      font-size: 12px; color: var(--accent2);
-      text-decoration: none; line-height: 1.4;
-      padding: 4px 8px; border-radius: 6px;
-      background: #23863622; border: 1px solid #23863644;
-      display: block; transition: background 0.15s;
-    }
-    .issue-link:hover { background: #23863644; }
-    .no-issues { font-size: 12px; color: var(--text2); }
-
-    .card-footer { margin-top: auto; }
-    .meta-row {
-      display: flex; align-items: center; gap: 10px;
-      flex-wrap: wrap; font-size: 12px; color: var(--text2);
-    }
-    .lang-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%; flex-shrink: 0;
-    }
-    .meta-item { white-space: nowrap; }
-    .gfi-count {
-      margin-left: auto;
-      background: #388bfd22; color: var(--accent);
-      border: 1px solid #388bfd44;
-      border-radius: 999px; padding: 2px 10px;
-      font-weight: 700; font-size: 11px;
-    }
-    .added-by { font-size: 11px; color: var(--text2); margin-top: 8px; }
-    .added-by a { color: var(--text2); }
-
-    /* EMPTY STATE */
-    .empty {
-      grid-column: 1 / -1; text-align: center;
-      padding: 80px 24px; color: var(--text2);
-    }
-    .empty h2 { font-size: 20px; margin-bottom: 8px; }
-
-    /* HOW IT WORKS */
-    .how {
-      border-top: 1px solid var(--border);
-      padding: 60px 24px;
-      text-align: center;
-      background: var(--surface);
-    }
-    .how h2 { font-size: 24px; font-weight: 700; margin-bottom: 36px; }
-    .steps {
-      display: flex; justify-content: center;
-      gap: 32px; flex-wrap: wrap; max-width: 900px; margin: 0 auto;
-    }
-    .step { max-width: 220px; text-align: center; }
-    .step-num {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--accent); color: #000;
-      font-weight: 700; font-size: 16px;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 12px;
-    }
-    .step h3 { font-size: 15px; margin-bottom: 6px; }
-    .step p { font-size: 13px; color: var(--text2); line-height: 1.5; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 24px; text-align: center;
-      font-size: 13px; color: var(--text2);
-    }
-    footer a { color: var(--text2); }
-
-    @media (max-width: 640px) {
-      .grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 20px; }
-    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0d1117;--surface:#161b22;--surface2:#1c2128;--surface3:#21262d;--border:#30363d;--border2:#3d444d;--text:#e6edf3;--text2:#9198a1;--text3:#656d76;--accent:#58a6ff;--green:#3fb950;--radius:12px}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:15px;line-height:1.5;min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    .hero{padding:72px 24px 56px;text-align:center;background:radial-gradient(ellipse 80% 60% at 50% -10%,#1f2d4a 0%,transparent 70%);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,#ffffff04 39px,#ffffff04 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,#ffffff04 39px,#ffffff04 40px);pointer-events:none}
+    .hero-inner{position:relative;z-index:1}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:#238636;color:#aff5b4;border-radius:999px;padding:5px 14px;font-size:12px;font-weight:600;letter-spacing:.3px;margin-bottom:24px}
+    .hero h1{font-size:clamp(30px,6vw,56px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:18px;background:linear-gradient(135deg,#e6edf3 30%,#58a6ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-sub{color:var(--text2);font-size:clamp(15px,2vw,18px);max-width:520px;margin:0 auto 40px;line-height:1.65}
+    .hero-stats{display:inline-flex;gap:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+    .stat{padding:16px 28px;text-align:center;border-right:1px solid var(--border)}
+    .stat:last-child{border-right:none}
+    .stat-num{font-size:26px;font-weight:800;color:var(--accent);line-height:1}
+    .stat-label{font-size:12px;color:var(--text2);margin-top:4px}
+    .cta-bar{background:linear-gradient(90deg,#238636,#2ea043);padding:14px 24px;text-align:center;font-size:14px;font-weight:500;color:#aff5b4}
+    .cta-bar a{color:#fff;font-weight:700;text-decoration:underline}
+    .controls-wrap{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 24px}
+    .controls-inner{max-width:1280px;margin:0 auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .search-wrap{position:relative;flex:1;min-width:180px}
+    .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:14px;pointer-events:none}
+    .search-wrap input{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:9px 14px 9px 36px;font-size:14px;outline:none;transition:border-color .15s}
+    .search-wrap input:focus{border-color:var(--accent)}
+    .search-wrap input::placeholder{color:var(--text3)}
+    .filter-select{background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:9px 12px;font-size:14px;cursor:pointer;outline:none}
+    .filter-select:focus{border-color:var(--accent)}
+    .result-count{color:var(--text3);font-size:13px;margin-left:auto;white-space:nowrap}
+    .cat-nav-wrap{max-width:1280px;margin:0 auto;padding:20px 24px 0}
+    .cat-nav{display:flex;gap:8px;flex-wrap:wrap}
+    .cat-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);transition:all .15s;white-space:nowrap;user-select:none}
+    .cat-btn:hover{border-color:var(--border2);color:var(--text);background:var(--surface3)}
+    .cat-btn.active{background:color-mix(in srgb,var(--cat-color) 15%,transparent);border-color:var(--cat-color);color:var(--cat-color)}
+    .cat-count{background:var(--surface3);color:var(--text3);border-radius:999px;padding:1px 7px;font-size:11px;font-weight:700}
+    .cat-btn.active .cat-count{background:color-mix(in srgb,var(--cat-color) 25%,transparent);color:var(--cat-color)}
+    .grid-wrap{max-width:1280px;margin:0 auto;padding:20px 24px 80px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s,box-shadow .2s,transform .15s}
+    .card:hover{border-color:var(--border2);box-shadow:0 8px 32px #00000040;transform:translateY(-2px)}
+    .card-top{display:flex;flex-direction:column;gap:8px}
+    .card-badges{display:flex;gap:6px;flex-wrap:wrap}
+    .cat-pill{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:color-mix(in srgb,var(--cat-color) 14%,transparent);border:1px solid color-mix(in srgb,var(--cat-color) 35%,transparent);color:var(--cat-color)}
+    .fresh-pill{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;background:color-mix(in srgb,var(--fresh-color) 12%,transparent);border:1px solid color-mix(in srgb,var(--fresh-color) 30%,transparent);color:var(--fresh-color)}
+    .card-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap}
+    .repo-name{font-size:15px;font-weight:700;color:var(--accent);line-height:1.3;display:block;transition:color .15s}
+    .repo-name:hover{color:#79b8ff;text-decoration:underline}
+    .diff-wrap{display:flex;align-items:center;gap:5px;flex-shrink:0;margin-top:2px}
+    .diff-stars{font-size:13px;color:var(--diff-color);letter-spacing:1px}
+    .diff-empty{color:var(--border2)}
+    .diff-label{font-size:10px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
+    .description{font-size:13px;color:var(--text2);line-height:1.55}
+    .why-box{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 12px}
+    .why-label{font-size:11px;font-weight:700;color:var(--text3);letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:5px}
+    .why-text{font-size:12px;color:var(--text2);line-height:1.55}
+    .issue-links{display:flex;flex-direction:column;gap:5px}
+    .issue-link{display:flex;align-items:flex-start;gap:6px;font-size:12px;color:var(--green);padding:6px 10px;border-radius:7px;background:#23863610;border:1px solid #23863628;transition:background .15s;line-height:1.4}
+    .issue-link:hover{background:#23863622}
+    .issue-arrow{flex-shrink:0;font-size:13px;margin-top:1px}
+    .card-footer{margin-top:auto}
+    .meta-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12px}
+    .lang-tag{display:inline-flex;align-items:center;gap:5px;color:var(--text2)}
+    .lang-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+    .meta-chip{color:var(--text2);background:var(--surface3);border:1px solid var(--border);border-radius:999px;padding:2px 9px;font-size:11px}
+    .gfi-chip{margin-left:auto;background:#388bfd18;color:var(--accent);border:1px solid #388bfd35;border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700}
+    .card-added{font-size:11px;color:var(--text3);margin-top:8px}
+    .card-added a{color:var(--text3)}
+    .card-added a:hover{color:var(--text2)}
+    .empty{grid-column:1/-1;text-align:center;padding:80px 24px;color:var(--text2)}
+    .empty-icon{font-size:40px;margin-bottom:16px}
+    .empty h2{font-size:20px;margin-bottom:8px;color:var(--text)}
+    .empty a{color:var(--accent)}
+    .how{border-top:1px solid var(--border);padding:72px 24px;background:var(--surface)}
+    .how-inner{max-width:1000px;margin:0 auto;text-align:center}
+    .section-label{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+    .how h2{font-size:28px;font-weight:800;margin-bottom:48px}
+    .steps{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+    .step{max-width:200px;text-align:center}
+    .step-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1f3d6e,#388bfd);color:#fff;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 0 20px #388bfd30}
+    .step h3{font-size:14px;font-weight:700;margin-bottom:6px}
+    .step p{font-size:13px;color:var(--text2);line-height:1.55}
+    footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;font-size:13px;color:var(--text3)}
+    footer a{color:var(--text3)}
+    footer a:hover{color:var(--text2)}
+    @media(max-width:640px){.grid{grid-template-columns:1fr}.hero-stats{flex-direction:column}.stat{border-right:none;border-bottom:1px solid var(--border)}.stat:last-child{border-bottom:none}}
   </style>
 </head>
 <body>
-
-<div class="hero">
-  <div class="hero-badge">🤖 Bot-verified · Human-curated</div>
-  <h1>Find repos that are <span>actually</span><br>ready for beginners</h1>
-  <p>Every repo here passed an automated quality check. Good docs, welcoming maintainers, real open issues waiting for you.</p>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Verified repos</div></div>
-    <div class="stat"><div class="stat-num">48</div><div class="stat-label">Open beginner issues</div></div>
-    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Languages</div></div>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🤖 Bot-verified · Human-curated</div>
+    <h1>Find repos that are<br>actually beginner-friendly</h1>
+    <p class="hero-sub">Every repo passed a 6-point automated check. No dead repos. No fake issues. No wasted time.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Verified repos</div></div>
+      <div class="stat"><div class="stat-num">48</div><div class="stat-label">Open beginner issues</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Categories</div></div>
+    </div>
   </div>
-</div>
-
+</section>
 <div class="cta-bar">
-  Know a beginner-friendly repo? → <a href="https://github.com/P-r-e-m-i-u-m/beginner-oss/compare" target="_blank">Open a PR to suggest it</a> — bot reviews it automatically
+  Know a beginner-friendly repo? → <a href="https://github.com/P-r-e-m-i-u-m/beginner-oss/compare" target="_blank">Open a PR to suggest it</a> — bot reviews automatically &nbsp;·&nbsp; <a href="why-add.html">Why add your repo? →</a>
 </div>
-
-<div class="controls">
-  <div class="search-wrap">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="search" placeholder="Search by name, language, description…" oninput="filter()">
+<div class="controls-wrap">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search" placeholder="Search repos, languages, descriptions…" oninput="applyFilters()">
+    </div>
+    <select class="filter-select" id="lang-filter" onchange="applyFilters()">
+      <option value="">All languages</option>
+      <option value="JavaScript">JavaScript</option>
+      <option value="Python">Python</option>
+      <option value="TypeScript">TypeScript</option>
+    </select>
+    <select class="filter-select" id="diff-filter" onchange="applyFilters()">
+      <option value="">Any difficulty</option>
+      <option value="1">⭐ Absolute beginner</option>
+      <option value="2">⭐⭐ Easy</option>
+      <option value="3">⭐⭐⭐ Moderate</option>
+      <option value="4">⭐⭐⭐⭐ Challenging</option>
+    </select>
+    <select class="filter-select" id="sort-select" onchange="applyFilters()">
+      <option value="gfi">Most beginner issues</option>
+      <option value="stars">Most stars</option>
+    </select>
+    <span class="result-count" id="result-count">4 repos</span>
   </div>
-  <select class="filter-select" id="lang-filter" onchange="filter()">
-    <option value="">All languages</option>
-    <option value="JavaScript">JavaScript</option>
-    <option value="Python">Python</option>
-    <option value="TypeScript">TypeScript</option>
-    <option value="Unknown">Unknown</option>
-  </select>
-  <select class="filter-select" id="sort-select" onchange="filter()">
-    <option value="gfi">Sort: Most beginner issues</option>
-    <option value="stars">Sort: Most stars</option>
-    <option value="fresh">Sort: Most recent</option>
-  </select>
-  <span class="count-label" id="count-label">4 repos</span>
 </div>
-
-<div class="grid" id="grid">
-  
-<div class="card" data-lang="TypeScript" data-name="freecodecamp/freecodecamp">
-  <div class="card-header">
+<div class="cat-nav-wrap">
+  <div class="cat-nav" id="cat-nav">
+    <button class="cat-btn active" data-cat="All" style="--cat-color:#58a6ff" onclick="selectCat(this)">✦ All <span class="cat-count">4</span></button>
+    <button class="cat-btn" data-cat="Web Dev" style="--cat-color:#38bdf8" onclick="selectCat(this)">🌐 Web Dev <span class="cat-count">2</span></button>
+    <button class="cat-btn" data-cat="Education" style="--cat-color:#facc15" onclick="selectCat(this)">📚 Education <span class="cat-count">2</span></button>
+  </div>
+</div>
+<div class="grid-wrap">
+  <div class="grid" id="grid">
+    
+<div class="card" data-lang="TypeScript" data-cat="Education" data-name="freecodecamp/freecodecamp" data-gfi="22" data-stars="400000" data-diff="4">
+  <div class="card-top">
+    <div class="card-badges">
+      <span class="cat-pill" style="--cat-color:#facc15">📚 Education</span>
+      <span class="fresh-pill" style="--fresh-color:#22c55e">This week</span>
+    </div>
     <div class="card-title-row">
       <a href="https://github.com/freeCodeCamp/freeCodeCamp" target="_blank" rel="noopener" class="repo-name">freeCodeCamp/freeCodeCamp</a>
-      <span class="fresh-badge" style="background:#22c55e22;color:#22c55e;border:1px solid #22c55e44">Active this week</span>
+      <div class="diff-wrap"><span class="diff-stars" title="Challenging" style="--diff-color:#f97316">★★★★<span class="diff-empty">☆</span></span><span class="diff-label" style="color:#f97316">Challenging</span></div>
     </div>
     <p class="description">freeCodeCamp.org's open-source codebase and curriculum. Learn to code for free.</p>
   </div>
-
   <div class="why-box">
-    <span class="why-icon">🤖</span>
-    <span class="why-text">One of the most active OSS communities in the world. Dedicated good first issue queue, fast PR reviews, and a Discord server with real humans ready to help.</span>
+    <span class="why-label">🤖 Why it's verified</span>
+    <p class="why-text">One of the most active OSS communities in the world. Dedicated good first issue queue, fast PR reviews, and a Discord server with real humans ready to help.</p>
   </div>
-
-  <div class="issue-links">
-    <a href="https://github.com/freeCodeCamp/freeCodeCamp/issues" target="_blank" rel="noopener" class="issue-link">↗ Fix typo in curriculum challenge</a><a href="https://github.com/freeCodeCamp/freeCodeCamp/issues" target="_blank" rel="noopener" class="issue-link">↗ Improve test description clarity</a><a href="https://github.com/freeCodeCamp/freeCodeCamp/issues" target="_blank" rel="noopener" class="issue-link">↗ Add missing alt text to image</a>
-  </div>
-
+  <div class="issue-links"><a href="https://github.com/freeCodeCamp/freeCodeCamp/issues" target="_blank" rel="noopener" class="issue-link"><span class="issue-arrow">↗</span><span>Fix typo in curriculum challenge</span></a><a href="https://github.com/freeCodeCamp/freeCodeCamp/issues" target="_blank" rel="noopener" class="issue-link"><span class="issue-arrow">↗</span><span>Improve test description clarity</span></a><a href="https://github.com/freeCodeCamp/freeCodeCamp/issues" target="_blank" rel="noopener" class="issue-link"><span class="issue-arrow">↗</span><span>Add missing alt text to image</span></a></div>
   <div class="card-footer">
     <div class="meta-row">
-      <span class="lang-dot" style="background:#3178c6"></span>
-      <span class="meta-item">TypeScript</span>
-      <span class="meta-item">⭐ 400,000</span>
-      <span class="meta-item">👥 5000+ contributors</span>
-      <span class="gfi-count">22 good first issues</span>
+      <span class="lang-tag"><span class="lang-dot" style="background:#3178c6"></span>TypeScript</span>
+      <span class="meta-chip">⭐ 400k</span>
+      <span class="meta-chip">👥 5000+</span>
+      <span class="gfi-chip">22 beginner issues</span>
     </div>
-    <div class="added-by">Added by <a href="https://github.com/P-r-e-m-i-u-m" target="_blank">@P-r-e-m-i-u-m</a> · 2026-04-25</div>
+    <div class="card-added">Added by <a href="https://github.com/P-r-e-m-i-u-m" target="_blank">@P-r-e-m-i-u-m</a></div>
   </div>
 </div>
   
-<div class="card" data-lang="JavaScript" data-name="eddiehubcommunity/linkfree">
-  <div class="card-header">
+<div class="card" data-lang="JavaScript" data-cat="Web Dev" data-name="eddiehubcommunity/linkfree" data-gfi="12" data-stars="8500" data-diff="3">
+  <div class="card-top">
+    <div class="card-badges">
+      <span class="cat-pill" style="--cat-color:#38bdf8">🌐 Web Dev</span>
+      <span class="fresh-pill" style="--fresh-color:#22c55e">This week</span>
+    </div>
     <div class="card-title-row">
       <a href="https://github.com/EddieHubCommunity/LinkFree" target="_blank" rel="noopener" class="repo-name">EddieHubCommunity/LinkFree</a>
-      <span class="fresh-badge" style="background:#22c55e22;color:#22c55e;border:1px solid #22c55e44">Active this week</span>
+      <div class="diff-wrap"><span class="diff-stars" title="Moderate" style="--diff-color:#eab308">★★★<span class="diff-empty">☆☆</span></span><span class="diff-label" style="color:#eab308">Moderate</span></div>
     </div>
     <p class="description">Connect to your audience with a single link. Showcase the content you create and your projects in one place.</p>
   </div>
-
   <div class="why-box">
-    <span class="why-icon">🤖</span>
-    <span class="why-text">Incredibly welcoming community led by Eddie Jaoude. Your first PR can be adding your own profile — real impact, zero risk of breaking anything.</span>
+    <span class="why-label">🤖 Why it's verified</span>
+    <p class="why-text">Incredibly welcoming community led by Eddie Jaoude. Your first PR can be adding your own profile — real impact, zero risk of breaking anything.</p>
   </div>
-
-  <div class="issue-links">
-    <a href="https://github.com/EddieHubCommunity/LinkFree/issues" target="_blank" rel="noopener" class="issue-link">↗ Add your profile to the directory</a><a href="https://github.com/EddieHubCommunity/LinkFree/issues" target="_blank" rel="noopener" class="issue-link">↗ Fix broken link in docs</a><a href="https://github.com/EddieHubCommunity/LinkFree/issues" target="_blank" rel="noopener" class="issue-link">↗ Improve error message on invalid JSON</a>
-  </div>
-
+  <div class="issue-links"><a href="https://github.com/EddieHubCommunity/LinkFree/issues" target="_blank" rel="noopener" class="issue-link"><span class="issue-arrow">↗</span><span>Add your profile to the directory</span></a><a href="https://github.com/EddieHubCommunity/LinkFree/issues" target="_blank" rel="noopener" class="issue-link"><span class="issue-arrow">↗</span><span>Fix broken link in docs</span></a><a href="https://github.com/EddieHubCommunity/LinkFree/issues" target="_blank" rel="noopener" class="issue-link"><span class="issue-arrow">↗</span><span>Improve error message on invalid JSON</span></a></div>
   <div class="card-footer">
     <div class="meta-row">
-      <span class="lang-dot" style="background:#f1e05a"></span>
-      <span class="meta-item">JavaScript</span>
-      <span class="meta-item">⭐ 8,500</span>
-      <span class="meta-item">👥 850+ contributors</span>
-      <span class="gfi-count">12 good first issues</span>
+      <span class="lang-tag"><span class="lang-dot" style="background:#f1e05a"></span>JavaScript</span>
+      <span class="meta-chip">⭐ 8.5k</span>
+      <span class="meta-chip">👥 850+</span>
+      <span class="gfi-chip">12 beginner issues</span>
     </div>
-    <div class="added-by">Added by <a href="https://github.com/P-r-e-m-i-u-m" target="_blank">@P-r-e-m-i-u-m</a> · 2026-04-25</div>
+    <div class="card-added">Added by <a href="https://github.com/P-r-e-m-i-u-m" target="_blank">@P-r-e-m-i-u-m</a></div>
   </div>
 </div>
   
-<div class="card" data-lang="Unknown" data-name="firstcontributions/first-contributions">
-  <div class="card-header">
+<div class="card" data-lang="Unknown" data-cat="Education" data-name="firstcontributions/first-contributions" data-gfi="8" data-stars="45000" data-diff="4">
+  <div class="card-top">
+    <div class="card-badges">
+      <span class="cat-pill" style="--cat-color:#facc15">📚 Education</span>
+      <span class="fresh-pill" style="--fresh-color:#22c55e">This week</span>
+    </div>
     <div class="card-title-row">
       <a href="https://github.com/firstcontributions/first-contributions" target="_blank" rel="noopener" class="repo-name">firstcontributions/first-contributions</a>
-      <span class="fresh-badge" style="background:#22c55e22;color:#22c55e;border:1px solid #22c55e44">Active this week</span>
+      <div class="diff-wrap"><span class="diff-stars" title="Challenging" style="--diff-color:#f97316">★★★★<span class="diff-empty">☆</span></span><span class="diff-label" style="color:#f97316">Challenging</span></div>
     </div>
     <p class="description">🚀✨ Help beginners to contribute to open source projects</p>
   </div>
-
   <div class="why-box">
-    <span class="why-icon">🤖</span>
-    <span class="why-text">Literally built for first-time contributors. Step-by-step guide, welcoming maintainers, and the simplest possible first PR — add your name to a list.</span>
+    <span class="why-label">🤖 Why it's verified</span>
+    <p class="why-text">Literally built for first-time contributors. Step-by-step guide, welcoming maintainers, and the simplest possible first PR — add your name to a list.</p>
   </div>
-
-  <div class="issue-links">
-    <a href="https://github.com/firstcontributions/first-contributions/issues" target="_blank" rel="noopener" class="issue-link">↗ Add your name to contributors list</a><a href="https://github.com/firstcontributions/first-contributions/issues" target="_blank" rel="noopener" class="issue-link">↗ Fix typo in README</a><a href="https://github.com/firstcontributions/first-contributions/issues" target="_blank" rel="noopener" class="issue-link">↗ Translate README to your language</a>
-  </div>
-
+  <div class="issue-links"><a href="https://github.com/firstcontributions/first-contributions/issues" target="_blank" rel="noopener" class="issue-link"><span class="issue-arrow">↗</span><span>Add your name to contributors list</span></a><a href="https://github.com/firstcontributions/first-contributions/issues" target="_blank" rel="noopener" class="issue-link"><span class="issue-arrow">↗</span><span>Fix typo in README</span></a><a href="https://github.com/firstcontributions/first-contributions/issues" target="_blank" rel="noopener" class="issue-link"><span class="issue-arrow">↗</span><span>Translate README to your language</span></a></div>
   <div class="card-footer">
     <div class="meta-row">
-      <span class="lang-dot" style="background:#858585"></span>
-      <span class="meta-item">Unknown</span>
-      <span class="meta-item">⭐ 45,000</span>
-      <span class="meta-item">👥 1200+ contributors</span>
-      <span class="gfi-count">8 good first issues</span>
+      
+      <span class="meta-chip">⭐ 45k</span>
+      <span class="meta-chip">👥 1200+</span>
+      <span class="gfi-chip">8 beginner issues</span>
     </div>
-    <div class="added-by">Added by <a href="https://github.com/P-r-e-m-i-u-m" target="_blank">@P-r-e-m-i-u-m</a> · 2026-04-25</div>
+    <div class="card-added">Added by <a href="https://github.com/P-r-e-m-i-u-m" target="_blank">@P-r-e-m-i-u-m</a></div>
   </div>
 </div>
   
-<div class="card" data-lang="Python" data-name="public-apis/public-apis">
-  <div class="card-header">
+<div class="card" data-lang="Python" data-cat="Web Dev" data-name="public-apis/public-apis" data-gfi="6" data-stars="320000" data-diff="4">
+  <div class="card-top">
+    <div class="card-badges">
+      <span class="cat-pill" style="--cat-color:#38bdf8">🌐 Web Dev</span>
+      <span class="fresh-pill" style="--fresh-color:#22c55e">This week</span>
+    </div>
     <div class="card-title-row">
       <a href="https://github.com/public-apis/public-apis" target="_blank" rel="noopener" class="repo-name">public-apis/public-apis</a>
-      <span class="fresh-badge" style="background:#22c55e22;color:#22c55e;border:1px solid #22c55e44">Active this week</span>
+      <div class="diff-wrap"><span class="diff-stars" title="Challenging" style="--diff-color:#f97316">★★★★<span class="diff-empty">☆</span></span><span class="diff-label" style="color:#f97316">Challenging</span></div>
     </div>
     <p class="description">A collective list of free APIs for use in software and web development</p>
   </div>
-
   <div class="why-box">
-    <span class="why-icon">🤖</span>
-    <span class="why-text">Contributing is just adding a row to a markdown table. Clear format, instant feedback, and your change helps thousands of developers find APIs.</span>
+    <span class="why-label">🤖 Why it's verified</span>
+    <p class="why-text">Contributing is just adding a row to a markdown table. Clear format, instant feedback, and your change helps thousands of developers find APIs.</p>
   </div>
-
-  <div class="issue-links">
-    <a href="https://github.com/public-apis/public-apis/issues" target="_blank" rel="noopener" class="issue-link">↗ Add new free API to the list</a><a href="https://github.com/public-apis/public-apis/issues" target="_blank" rel="noopener" class="issue-link">↗ Fix broken API link</a><a href="https://github.com/public-apis/public-apis/issues" target="_blank" rel="noopener" class="issue-link">↗ Improve category description</a>
-  </div>
-
+  <div class="issue-links"><a href="https://github.com/public-apis/public-apis/issues" target="_blank" rel="noopener" class="issue-link"><span class="issue-arrow">↗</span><span>Add new free API to the list</span></a><a href="https://github.com/public-apis/public-apis/issues" target="_blank" rel="noopener" class="issue-link"><span class="issue-arrow">↗</span><span>Fix broken API link</span></a><a href="https://github.com/public-apis/public-apis/issues" target="_blank" rel="noopener" class="issue-link"><span class="issue-arrow">↗</span><span>Improve category description</span></a></div>
   <div class="card-footer">
     <div class="meta-row">
-      <span class="lang-dot" style="background:#3572A5"></span>
-      <span class="meta-item">Python</span>
-      <span class="meta-item">⭐ 320,000</span>
-      <span class="meta-item">👥 320+ contributors</span>
-      <span class="gfi-count">6 good first issues</span>
+      <span class="lang-tag"><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+      <span class="meta-chip">⭐ 320k</span>
+      <span class="meta-chip">👥 320+</span>
+      <span class="gfi-chip">6 beginner issues</span>
     </div>
-    <div class="added-by">Added by <a href="https://github.com/P-r-e-m-i-u-m" target="_blank">@P-r-e-m-i-u-m</a> · 2026-04-25</div>
+    <div class="card-added">Added by <a href="https://github.com/P-r-e-m-i-u-m" target="_blank">@P-r-e-m-i-u-m</a></div>
   </div>
 </div>
-</div>
-
-<div class="how">
-  <h2>How it works</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Someone suggests a repo</h3>
-      <p>Open a PR with the repo URL and why it's beginner-friendly.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Bot validates it</h3>
-      <p>Checks README, CONTRIBUTING.md, license, activity, contributor count, and open good first issues.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Auto-merged or closed</h3>
-      <p>Pass = instant merge + site rebuild. Fail = PR closed with exact reasons.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <h3>Stays fresh</h3>
-      <p>Every Monday, the bot re-checks all repos and auto-removes dead ones.</p>
-    </div>
   </div>
 </div>
-
+<section class="how">
+  <div class="how-inner">
+    <div class="section-label">How it works</div>
+    <h2>Zero guesswork. Just quality repos.</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h3>Someone suggests a repo</h3><p>Open a PR with the URL and why it's beginner-friendly.</p></div>
+      <div class="step"><div class="step-num">2</div><h3>Bot validates it</h3><p>Checks README, CONTRIBUTING.md, license, activity, contributors, and open issues.</p></div>
+      <div class="step"><div class="step-num">3</div><h3>Auto-merged or closed</h3><p>Pass = instant merge + site rebuild. Fail = closed with exact reasons.</p></div>
+      <div class="step"><div class="step-num">4</div><h3>Stays fresh</h3><p>Every Monday the bot re-checks all repos and removes dead ones automatically.</p></div>
+    </div>
+  </div>
+</section>
 <footer>
-  <p>Built by <a href="https://github.com/P-r-e-m-i-u-m" target="_blank">@P-r-e-m-i-u-m</a> · <a href="https://github.com/P-r-e-m-i-u-m/beginner-oss" target="_blank">Source on GitHub</a> · Last updated: 2026-04-25</p>
+  <p>Built by <a href="https://github.com/P-r-e-m-i-u-m" target="_blank">@P-r-e-m-i-u-m</a> · <a href="https://github.com/P-r-e-m-i-u-m/beginner-oss" target="_blank">Source on GitHub</a> · Updated 2026-04-25</p>
 </footer>
-
 <script>
+  let activeCat = "All";
   const allCards = Array.from(document.querySelectorAll(".card"));
-
-  function filter() {
+  function selectCat(btn) {
+    document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeCat = btn.dataset.cat;
+    applyFilters();
+  }
+  function applyFilters() {
     const q = document.getElementById("search").value.toLowerCase();
     const lang = document.getElementById("lang-filter").value;
+    const diff = document.getElementById("diff-filter").value;
     const sort = document.getElementById("sort-select").value;
-
     let visible = allCards.filter(card => {
-      const name = card.dataset.name || "";
-      const cardLang = card.dataset.lang || "";
-      const matchQ = !q || name.includes(q) || card.textContent.toLowerCase().includes(q);
-      const matchLang = !lang || cardLang === lang;
-      return matchQ && matchLang;
+      const matchCat = activeCat === "All" || card.dataset.cat === activeCat;
+      const matchLang = !lang || card.dataset.lang === lang;
+      const matchDiff = !diff || card.dataset.diff === diff;
+      const matchQ = !q || card.dataset.name.includes(q) || card.textContent.toLowerCase().includes(q);
+      return matchCat && matchLang && matchDiff && matchQ;
     });
-
-    allCards.forEach(c => c.style.display = "none");
-
-    // Sort
-    visible.sort((a, b) => {
-      if (sort === "stars") {
-        const sa = parseInt(a.querySelector(".meta-item:nth-child(3)")?.textContent?.replace(/[^0-9]/g, "") || 0);
-        const sb = parseInt(b.querySelector(".meta-item:nth-child(3)")?.textContent?.replace(/[^0-9]/g, "") || 0);
-        return sb - sa;
-      }
-      return 0;
-    });
-
+    visible.sort((a, b) => sort === "stars"
+      ? parseInt(b.dataset.stars) - parseInt(a.dataset.stars)
+      : parseInt(b.dataset.gfi) - parseInt(a.dataset.gfi));
     const grid = document.getElementById("grid");
-    const empty = grid.querySelector(".empty");
-    if (empty) empty.remove();
-
+    grid.querySelectorAll(".empty").forEach(e => e.remove());
+    allCards.forEach(c => { c.style.display = "none"; });
     if (visible.length === 0) {
-      grid.insertAdjacentHTML("beforeend", `<div class="empty"><h2>No results</h2><p>Try a different search or language.</p></div>`);
+      grid.insertAdjacentHTML("beforeend", `<div class="empty"><div class="empty-icon">🔍</div><h2>No repos found</h2><p>Try a different filter, or <a href="https://github.com/P-r-e-m-i-u-m/beginner-oss/compare">suggest one</a>.</p></div>`);
     } else {
-      visible.forEach(c => {
-        c.style.display = "";
-        grid.appendChild(c);
-      });
+      visible.forEach(c => { c.style.display = ""; grid.appendChild(c); });
     }
-
-    document.getElementById("count-label").textContent = `${visible.length} repo${visible.length !== 1 ? "s" : ""}`;
+    document.getElementById("result-count").textContent = `${visible.length} repo${visible.length !== 1 ? "s" : ""}`;
   }
 </script>
-
 </body>
 </html>
