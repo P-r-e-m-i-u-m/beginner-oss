@@ -1,0 +1,134 @@
+[
+  {
+    "full_name": "firstcontributions/first-contributions",
+    "name": "first-contributions",
+    "owner": "firstcontributions",
+    "url": "https://github.com/firstcontributions/first-contributions",
+    "description": "🚀✨ Help beginners to contribute to open source projects",
+    "language": "Unknown",
+    "stars": 45000,
+    "forks": 80000,
+    "open_issues": 12,
+    "good_first_issues": 8,
+    "good_first_issue_links": [
+      {
+        "title": "Add your name to contributors list",
+        "url": "https://github.com/firstcontributions/first-contributions/issues"
+      },
+      {
+        "title": "Fix typo in README",
+        "url": "https://github.com/firstcontributions/first-contributions/issues"
+      },
+      {
+        "title": "Translate README to your language",
+        "url": "https://github.com/firstcontributions/first-contributions/issues"
+      }
+    ],
+    "contributors": 1200,
+    "last_commit_days": 2,
+    "license": "MIT",
+    "why": "Literally built for first-time contributors. Step-by-step guide, welcoming maintainers, and the simplest possible first PR — add your name to a list.",
+    "added_by": "P-r-e-m-i-u-m",
+    "added_at": "2026-04-25",
+    "verified": true
+  },
+  {
+    "full_name": "EddieHubCommunity/LinkFree",
+    "name": "LinkFree",
+    "owner": "EddieHubCommunity",
+    "url": "https://github.com/EddieHubCommunity/LinkFree",
+    "description": "Connect to your audience with a single link. Showcase the content you create and your projects in one place.",
+    "language": "JavaScript",
+    "stars": 8500,
+    "forks": 9200,
+    "open_issues": 45,
+    "good_first_issues": 12,
+    "good_first_issue_links": [
+      {
+        "title": "Add your profile to the directory",
+        "url": "https://github.com/EddieHubCommunity/LinkFree/issues"
+      },
+      {
+        "title": "Fix broken link in docs",
+        "url": "https://github.com/EddieHubCommunity/LinkFree/issues"
+      },
+      {
+        "title": "Improve error message on invalid JSON",
+        "url": "https://github.com/EddieHubCommunity/LinkFree/issues"
+      }
+    ],
+    "contributors": 850,
+    "last_commit_days": 1,
+    "license": "Apache-2.0",
+    "why": "Incredibly welcoming community led by Eddie Jaoude. Your first PR can be adding your own profile — real impact, zero risk of breaking anything.",
+    "added_by": "P-r-e-m-i-u-m",
+    "added_at": "2026-04-25",
+    "verified": true
+  },
+  {
+    "full_name": "public-apis/public-apis",
+    "name": "public-apis",
+    "owner": "public-apis",
+    "url": "https://github.com/public-apis/public-apis",
+    "description": "A collective list of free APIs for use in software and web development",
+    "language": "Python",
+    "stars": 320000,
+    "forks": 34000,
+    "open_issues": 60,
+    "good_first_issues": 6,
+    "good_first_issue_links": [
+      {
+        "title": "Add new free API to the list",
+        "url": "https://github.com/public-apis/public-apis/issues"
+      },
+      {
+        "title": "Fix broken API link",
+        "url": "https://github.com/public-apis/public-apis/issues"
+      },
+      {
+        "title": "Improve category description",
+        "url": "https://github.com/public-apis/public-apis/issues"
+      }
+    ],
+    "contributors": 320,
+    "last_commit_days": 5,
+    "license": "MIT",
+    "why": "Contributing is just adding a row to a markdown table. Clear format, instant feedback, and your change helps thousands of developers find APIs.",
+    "added_by": "P-r-e-m-i-u-m",
+    "added_at": "2026-04-25",
+    "verified": true
+  },
+  {
+    "full_name": "freeCodeCamp/freeCodeCamp",
+    "name": "freeCodeCamp",
+    "owner": "freeCodeCamp",
+    "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+    "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn to code for free.",
+    "language": "TypeScript",
+    "stars": 400000,
+    "forks": 37000,
+    "open_issues": 180,
+    "good_first_issues": 22,
+    "good_first_issue_links": [
+      {
+        "title": "Fix typo in curriculum challenge",
+        "url": "https://github.com/freeCodeCamp/freeCodeCamp/issues"
+      },
+      {
+        "title": "Improve test description clarity",
+        "url": "https://github.com/freeCodeCamp/freeCodeCamp/issues"
+      },
+      {
+        "title": "Add missing alt text to image",
+        "url": "https://github.com/freeCodeCamp/freeCodeCamp/issues"
+      }
+    ],
+    "contributors": 5000,
+    "last_commit_days": 1,
+    "license": "BSD-3-Clause",
+    "why": "One of the most active OSS communities in the world. Dedicated good first issue queue, fast PR reviews, and a Discord server with real humans ready to help.",
+    "added_by": "P-r-e-m-i-u-m",
+    "added_at": "2026-04-25",
+    "verified": true
+  }
+]
