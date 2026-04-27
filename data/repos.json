@@ -6,10 +6,10 @@
     "url": "https://github.com/firstcontributions/first-contributions",
     "description": "🚀✨ Help beginners to contribute to open source projects",
     "language": "Unknown",
-    "stars": 45000,
+    "stars": 53674,
     "forks": 80000,
     "open_issues": 12,
-    "good_first_issues": 8,
+    "good_first_issues": 10,
     "good_first_issue_links": [
       {
         "title": "Add your name to contributors list",
@@ -25,7 +25,7 @@
       }
     ],
     "contributors": 1200,
-    "last_commit_days": 2,
+    "last_commit_days": 0,
     "license": "MIT",
     "topics": [
       "beginner",
@@ -37,48 +37,8 @@
     "added_by": "P-r-e-m-i-u-m",
     "added_at": "2026-04-25",
     "verified": true,
-    "difficulty": 1
-  },
-  {
-    "full_name": "EddieHubCommunity/LinkFree",
-    "name": "LinkFree",
-    "owner": "EddieHubCommunity",
-    "url": "https://github.com/EddieHubCommunity/LinkFree",
-    "description": "Connect to your audience with a single link. Showcase the content you create and your projects in one place.",
-    "language": "JavaScript",
-    "stars": 8500,
-    "forks": 9200,
-    "open_issues": 45,
-    "good_first_issues": 12,
-    "good_first_issue_links": [
-      {
-        "title": "Add your profile to the directory",
-        "url": "https://github.com/EddieHubCommunity/LinkFree/issues"
-      },
-      {
-        "title": "Fix broken link in docs",
-        "url": "https://github.com/EddieHubCommunity/LinkFree/issues"
-      },
-      {
-        "title": "Improve error message on invalid JSON",
-        "url": "https://github.com/EddieHubCommunity/LinkFree/issues"
-      }
-    ],
-    "contributors": 850,
-    "last_commit_days": 1,
-    "license": "Apache-2.0",
-    "topics": [
-      "javascript",
-      "nextjs",
-      "community",
-      "web"
-    ],
-    "category": "Web Dev",
-    "why": "Incredibly welcoming community led by Eddie Jaoude. Your first PR can be adding your own profile — real impact, zero risk of breaking anything.",
-    "added_by": "P-r-e-m-i-u-m",
-    "added_at": "2026-04-25",
-    "verified": true,
-    "difficulty": 2
+    "difficulty": 1,
+    "last_checked": "2026-04-27"
   },
   {
     "full_name": "public-apis/public-apis",
@@ -87,10 +47,10 @@
     "url": "https://github.com/public-apis/public-apis",
     "description": "A collective list of free APIs for use in software and web development",
     "language": "Python",
-    "stars": 320000,
+    "stars": 426777,
     "forks": 34000,
     "open_issues": 60,
-    "good_first_issues": 6,
+    "good_first_issues": 1,
     "good_first_issue_links": [
       {
         "title": "Add new free API to the list",
@@ -106,7 +66,7 @@
       }
     ],
     "contributors": 320,
-    "last_commit_days": 5,
+    "last_commit_days": 39,
     "license": "MIT",
     "topics": [
       "api",
@@ -119,7 +79,8 @@
     "added_by": "P-r-e-m-i-u-m",
     "added_at": "2026-04-25",
     "verified": true,
-    "difficulty": 1
+    "difficulty": 1,
+    "last_checked": "2026-04-27"
   },
   {
     "full_name": "freeCodeCamp/freeCodeCamp",
@@ -128,10 +89,10 @@
     "url": "https://github.com/freeCodeCamp/freeCodeCamp",
     "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn to code for free.",
     "language": "TypeScript",
-    "stars": 400000,
+    "stars": 443655,
     "forks": 37000,
     "open_issues": 180,
-    "good_first_issues": 22,
+    "good_first_issues": 0,
     "good_first_issue_links": [
       {
         "title": "Fix typo in curriculum challenge",
@@ -147,7 +108,7 @@
       }
     ],
     "contributors": 5000,
-    "last_commit_days": 1,
+    "last_commit_days": 0,
     "license": "BSD-3-Clause",
     "topics": [
       "education",
@@ -160,6 +121,7 @@
     "added_by": "P-r-e-m-i-u-m",
     "added_at": "2026-04-25",
     "verified": true,
-    "difficulty": 3
+    "difficulty": 3,
+    "last_checked": "2026-04-27"
   }
 ]
