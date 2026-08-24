@@ -6,7 +6,7 @@
     "url": "https://github.com/firstcontributions/first-contributions",
     "description": "🚀✨ Help beginners to contribute to open source projects",
     "language": "Unknown",
-    "stars": 55524,
+    "stars": 55640,
     "forks": 80000,
     "open_issues": 12,
     "good_first_issues": 0,
@@ -38,7 +38,7 @@
     "added_at": "2026-04-25",
     "verified": true,
     "difficulty": 1,
-    "last_checked": "2026-08-17"
+    "last_checked": "2026-08-24"
   },
   {
     "full_name": "public-apis/public-apis",
@@ -47,7 +47,7 @@
     "url": "https://github.com/public-apis/public-apis",
     "description": "A collective list of free APIs for use in software and web development",
     "language": "Python",
-    "stars": 462028,
+    "stars": 469304,
     "forks": 34000,
     "open_issues": 60,
     "good_first_issues": 0,
@@ -66,7 +66,7 @@
       }
     ],
     "contributors": 320,
-    "last_commit_days": 0,
+    "last_commit_days": 4,
     "license": "MIT",
     "topics": [
       "api",
@@ -80,7 +80,7 @@
     "added_at": "2026-04-25",
     "verified": true,
     "difficulty": 1,
-    "last_checked": "2026-08-17"
+    "last_checked": "2026-08-24"
   },
   {
     "full_name": "freeCodeCamp/freeCodeCamp",
@@ -89,7 +89,7 @@
     "url": "https://github.com/freeCodeCamp/freeCodeCamp",
     "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn to code for free.",
     "language": "TypeScript",
-    "stars": 454160,
+    "stars": 454493,
     "forks": 37000,
     "open_issues": 180,
     "good_first_issues": 0,
@@ -108,7 +108,7 @@
       }
     ],
     "contributors": 5000,
-    "last_commit_days": 0,
+    "last_commit_days": 1,
     "license": "BSD-3-Clause",
     "topics": [
       "education",
@@ -122,6 +122,6 @@
     "added_at": "2026-04-25",
     "verified": true,
     "difficulty": 3,
-    "last_checked": "2026-08-17"
+    "last_checked": "2026-08-24"
   }
 ]
